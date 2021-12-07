@@ -1,0 +1,8 @@
+services:
+  hello-world:
+    build:
+      context: https://github.com/ACCOUNT/hello-world:main
+
+ingress:
+  service: hello-world
+  port: 80

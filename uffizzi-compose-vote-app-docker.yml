@@ -1,0 +1,32 @@
+services:
+  redis:
+    image: redis:latest
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  nginx:
+    image: nginx:latest
+    configs:
+      - source: vote.conf
+        target: /etc/nginx/conf.d
+
+  worker:
+    image: uffizzicloud/example-worker:latest
+    deploy:
+      resources:
+        limits:
+          memory: 250M
+
+  vote:
+    image: uffizzicloud/example-vote:latest
+
+  result:
+    image: uffizzicloud/example-result:latest
+
+ingress:
+  service: nginx
+  port: 8080
