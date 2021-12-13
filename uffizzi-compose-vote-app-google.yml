@@ -9,7 +9,7 @@ services:
   nginx:
     image: nginx:latest
     configs:
-      - source: ./configs/vote.conf
+      - source: vote_conf
         target: /etc/nginx/conf.d
 
   worker:
@@ -24,6 +24,10 @@ services:
 
   result:
     image: gcr.io/uffizzi-pro-qa-gke/example-result:latest
+
+configs:
+  vote_conf:
+    file: ./configs/vote.conf
 
 ingress:
   service: nginx
