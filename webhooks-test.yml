@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: postgres
       TEST: test1
     deploy:
-      x-uffizzi-auto-deploy-updates: false
+      x-uffizzi-auto-deploy-updates: true
 
 
 ingress:
