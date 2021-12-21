@@ -1,0 +1,8 @@
+services:
+  hello-world:
+    build:
+      context: ./infra
+
+ingress:
+  service: hello-world
+  port: 80
