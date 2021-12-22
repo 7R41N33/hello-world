@@ -9,8 +9,8 @@ services:
   nginx:
     image: nginx:latest
     configs:
-      - source: vote.conf
-        target: /etc/nginx/conf.d
+      - source: vote_conf
+        target: /etc/nginx/conf.d/default.conf
 
   worker:
     build:
@@ -30,6 +30,10 @@ services:
     build:
       context: https://github.com/7R41N33/example-voting-result
       dockerfile: Dockerfile
+
+configs:
+  vote_conf:
+    file: ./configs/vote.conf
 
 continuous_preview:
   deploy_preview_when_pull_request_is_opened: true
