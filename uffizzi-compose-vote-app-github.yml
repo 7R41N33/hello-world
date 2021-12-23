@@ -14,7 +14,7 @@ services:
 
   worker:
     build:
-      context: https://github.com/ACCOUNT/example-voting-worker
+      context: https://github.com/7R41N33/example-voting-worker
     deploy:
       resources:
         limits:
@@ -22,11 +22,11 @@ services:
 
   vote:
     build:
-      context: https://github.com/ACCOUNT/example-voting-vote
+      context: https://github.com/7R41N33/example-voting-vote
 
   result:
     build:
-      context: https://github.com/ACCOUNT/example-voting-result
+      context: https://github.com/7R41N33/example-voting-result
 
 configs:
   vote_conf:
