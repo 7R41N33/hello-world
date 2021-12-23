@@ -1,7 +1,7 @@
 services:
   hello-world:
     build:
-      context: ./dir
+      context: ./dir1
 
 ingress:
   service: hello-world
