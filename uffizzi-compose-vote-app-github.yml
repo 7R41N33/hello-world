@@ -14,8 +14,7 @@ services:
 
   worker:
     build:
-      context: https://github.com/7R41N33/example-voting-worker
-      dockerfile: Dockerfile
+      context: https://github.com/ACCOUNT/example-voting-worker
     deploy:
       resources:
         limits:
@@ -23,13 +22,11 @@ services:
 
   vote:
     build:
-      context: https://github.com/7R41N33/example-voting-vote
-      dockerfile: Dockerfile
+      context: https://github.com/ACCOUNT/example-voting-vote
 
   result:
     build:
-      context: https://github.com/7R41N33/example-voting-result
-      dockerfile: Dockerfile
+      context: https://github.com/ACCOUNT/example-voting-result
 
 configs:
   vote_conf:
@@ -39,6 +36,7 @@ continuous_preview:
   deploy_preview_when_pull_request_is_opened: true
   delete_preview_when_pull_request_is_closed: true
   share_to_github: true
+  delete_preview_after: 10h
 
 ingress:
   service: nginx
