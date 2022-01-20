@@ -2,6 +2,6 @@ services:
   hello-world:
     build: .
 
-x-uffizzi-ingress:
+x-uffizzi-ingress-1:
   service: hello-world
   port: 80
