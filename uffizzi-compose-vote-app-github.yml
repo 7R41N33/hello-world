@@ -29,7 +29,7 @@ services:
       context: https://github.com/7R41N33/example-voting-result
 
 configs:
-  vote_conf1:
+  vote_conf:
     file: ./configs/vote.conf
 
 x-uffizzi-continuous-preview:
