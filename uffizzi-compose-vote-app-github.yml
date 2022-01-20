@@ -1,13 +1,13 @@
 services:
   redis:
-    image: redis:latest
+    image: redis
 
   postgres:
     image: postgres:9.6
     env_file: .env
 
   nginx:
-    image: nginx:latest
+    image: nginx
     configs:
       - source: vote_conf
         target: /etc/nginx/conf.d/default.conf
@@ -32,12 +32,12 @@ configs:
   vote_conf:
     file: ./configs/vote.conf
 
-continuous_preview:
+x-uffizzi-continuous-preview:
   deploy_preview_when_pull_request_is_opened: true
   delete_preview_when_pull_request_is_closed: true
   share_to_github: true
   delete_preview_after: 10h
 
-ingress:
+x-uffizzi-ingress:
   service: nginx
   port: 8080
