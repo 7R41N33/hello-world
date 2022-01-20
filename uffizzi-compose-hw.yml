@@ -4,4 +4,4 @@ services:
 
 x-uffizzi-ingress:
   service: hello-world
-  port: 80
+  port: frfr
