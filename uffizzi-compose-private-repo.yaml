@@ -1,0 +1,8 @@
+services:
+  repo:
+    image: uffizzitest/test-private-repo
+
+x-uffizzi-ingress:
+  service: repo
+  port: 80
+  
