@@ -1,6 +1,6 @@
 services:
   hello-world:
-    build: ./infra
+    build: ./infra/
 
 x-uffizzi-ingress:
   service: hello-world
