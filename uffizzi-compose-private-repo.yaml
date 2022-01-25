@@ -1,6 +1,6 @@
 services:
   webhook:
-    image: uffizzitest/test-private-repo
+    image: uffizzicloud/hello-world
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
