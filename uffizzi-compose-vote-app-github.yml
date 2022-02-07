@@ -1,21 +1,20 @@
 services:
   redis:
-    image: redis:latest
+    image: redis
 
   postgres:
     image: postgres:9.6
     env_file: .env
 
   nginx:
-    image: nginx:latest
+    image: nginx
     configs:
-      - source: vote.conf
-        target: /etc/nginx/conf.d
+      - source: vote_conf
+        target: /etc/nginx/conf.d/default.conf
 
   worker:
     build:
-      context: https://github.com/7R41N33/example-voting-worker:main
-      dockerfile: Dockerfile
+      context: https://github.com/7R41N33/example-voting-worker
     deploy:
       resources:
         limits:
@@ -23,19 +22,22 @@ services:
 
   vote:
     build:
-      context: https://github.com/7R41N33/example-voting-vote:main
-      dockerfile: Dockerfile
+      context: https://github.com/7R41N33/example-voting-vote
 
   result:
     build:
-      context: https://github.com/7R41N33/example-voting-result:main
-      dockerfile: Dockerfile
+      context: https://github.com/7R41N33/example-voting-result
 
-continuous_preview:
+configs:
+  vote_conf:
+    file: ./configs/vote.conf
+
+x-uffizzi-continuous-preview:
   deploy_preview_when_pull_request_is_opened: true
   delete_preview_when_pull_request_is_closed: true
   share_to_github: true
+  delete_preview_after: 10h
 
-ingress:
+x-uffizzi-ingress:
   service: nginx
   port: 8080

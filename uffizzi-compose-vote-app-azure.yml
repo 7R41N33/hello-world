@@ -11,7 +11,7 @@ services:
   nginx:
     image: nginx:latest
     configs:
-      - source: vote.conf
+      - source: vote_conf
         target: /etc/nginx/conf.d
 
   worker:
@@ -26,6 +26,10 @@ services:
 
   result:
     image: uffizziqa.azurecr.io/example-result:latest
+
+configs:
+  vote_conf:
+    file: ./configs/vote.conf
 
 ingress:
   service: nginx

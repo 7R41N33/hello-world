@@ -1,0 +1,46 @@
+services:
+  frontend:
+    build:
+      context: https://github.com/7R41N33/awesome-compose:master
+      dockerfile: react-rust-postgres/frontend/Dockerfile
+      target: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/src:/code/src:ro
+
+  backend:
+    build:
+      context: https://github.com/7R41N33/awesome-compose:master
+      dockerfile: react-rust-postgres/backend/Dockerfile
+      target: development
+    environment:
+      - ADDRESS=0.0.0.0:8000
+      - RUST_LOG=debug
+      - PG_DBNAME=postgres
+      - PG_HOST=localhost
+      - PG_USER=postgres
+      - PG_PASSWORD=mysecretpassword
+    volumes:
+      - ./backend/src:/code/src
+      - backend-cache:/code/target
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  backend-cache: {}
+  db-data: {}
+
+ingress:
+  service: frontend
+  port: 3000
