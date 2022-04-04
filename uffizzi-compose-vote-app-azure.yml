@@ -31,11 +31,11 @@ configs:
   vote_conf:
     file: ./configs/vote.conf
 
-ingress:
+x-ingress:
   service: nginx
   port: 8080
 
-continuous_preview:
+x-continuous_preview:
   deploy_preview_when_pull_request_is_opened: true
   delete_preview_when_pull_request_is_closed: true
   delete_preview_after: 10h
