@@ -16,7 +16,7 @@ services:
 
   worker:
     build:
-      context: https://github.com/7R41N33/example-voting-worker:main
+      context: https://github.com/7R41N33/example-voting-worker
       dockerfile: Dockerfile
     deploy:
       resources:
@@ -29,11 +29,11 @@ services:
   result:
     image: uffizziqa.azurecr.io/example-result:latest
 
-ingress:
+x-ingress:
   service: nginx
   port: 8080
 
-continuous_preview:
+x-continuous_preview:
   deploy_preview_when_pull_request_is_opened: true
   delete_preview_when_pull_request_is_closed: true
   delete_preview_after: 10h
