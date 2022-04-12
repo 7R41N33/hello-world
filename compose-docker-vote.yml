@@ -45,4 +45,4 @@ services:
 # Loadbalancer configuration
 configs:
   nginx-vote-conf:
-    file: ./vote.conf
+    file: ./configs/vote.conf
